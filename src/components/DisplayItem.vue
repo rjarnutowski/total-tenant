@@ -1,12 +1,10 @@
-// DisplayItem.vue
-
 <template>
     <div>
         <h1>Items</h1>
 
         <div class="row">
-          <div class="col-md-8"></div>
-          <div class="col-md-4">
+          <div class="col-md-10"></div>
+          <div class="col-md-2">
             <router-link :to="{ name: 'CreateItem' }" class="btn btn-primary">Create Item</router-link>
           </div>
         </div><br />
@@ -26,7 +24,8 @@
                     <td>{{ item._id }}</td>
                     <td>{{ item.name }}</td>
                     <td>{{ item.price }}</td>
-                    <td></td>
+                    <td><router-link :to="{name: 'EditItem', params: { id: item._id }}" class="btn btn-primary">Edit</router-link></td>
+                    <td><button class="btn btn-danger" v-on:click="deleteItem(item._id)">Delete</button></td>
                 </tr>
             </tbody>
         </table>
@@ -54,6 +53,12 @@
               this.axios.get(uri).then((response) => {
                   this.items = response.data;
               });
+            },
+            deleteItem(id)
+            {
+              let uri = 'http://localhost:4000/items/delete/'+id;
+              this.items.splice(id, 1);
+              this.axios.get(uri);
             }
         }
     }
