@@ -1,5 +1,3 @@
-// itemRoutes.js
-
 var express = require('express');
 var app = express();
 var itemRoutes = express.Router();
@@ -61,9 +59,9 @@ itemRoutes.route('/update/:id').post(function (req, res) {
 // Defined delete | remove | destroy route
 itemRoutes.route('/delete/:id').get(function (req, res) {
   Item.findByIdAndRemove({_id: req.params.id}, function(err, item){
-        if(err) res.json(err);
-        else res.json('Successfully removed');
-    });
+		if(err) res.json(err);
+		else res.json('Successfully removed');
+	});
 });
 
 module.exports = itemRoutes;
