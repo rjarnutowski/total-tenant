@@ -7,7 +7,8 @@
 *.o
 *.so
 
-# Vendor Dirs #
+# Package Directories #
+######################
 node_modules
 vendor
 
