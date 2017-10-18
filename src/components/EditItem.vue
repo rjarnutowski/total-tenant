@@ -1,5 +1,3 @@
-// EditItem.vue
-
 <template>
     <div>
         <h1>Update Item</h1>
@@ -27,18 +25,15 @@
 </template>
 
 <script>
-
     export default{
         data(){
             return{
                 item:{}
             }
         },
-
         created: function(){
             this.getItem();
         },
-
         methods: {
             getItem()
             {
@@ -47,7 +42,6 @@
                     this.item = response.data;
                 });
             },
-
             updateItem()
             {
               let uri = 'http://localhost:4000/items/update/' + this.$route.params.id;

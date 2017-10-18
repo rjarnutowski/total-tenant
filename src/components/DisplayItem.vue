@@ -33,19 +33,16 @@
 </template>
 
 <script>
-
     export default {
         data(){
             return{
                 items: []
             }
         },
-
         created: function()
         {
             this.fetchItems();
         },
-
         methods: {
             fetchItems()
             {

@@ -1,9 +1,7 @@
-// CreateItem.vue
-
 <template>
   <div>
     <h1>Create An Item</h1>
-    <form>
+    <form v-on:submit.prevent="addItem">
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -16,7 +14,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label>Item Price:</label>
-              <input type="text" class="form-control col-md-6" v-model="item.price">
+              <input type="text" class="form-control col-md-6" v-model="item.price" />
             </div>
           </div>
         </div><br />
@@ -27,8 +25,7 @@
   </div>
 </template>
 <script>
-
-export default {
+  export default {
     data(){
         return{
           item:{}
@@ -38,9 +35,9 @@ export default {
       addItem(){
         let uri = 'http://localhost:4000/items/add';
         this.axios.post(uri, this.item).then((response) => {
-          console.log(response)
+          this.$router.push({name: 'DisplayItem'})
         })
     }
-    }
   }
+}
 </script>
